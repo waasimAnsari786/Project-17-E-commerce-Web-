@@ -1,11 +1,11 @@
-.jost{
-  font-family: "Jost", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+.jost {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 /* here's my css variables */
-:root{
+:root {
     --backgroun-lightgray: #F7F7F7;
     --backgroun-color-white: #ffffff;
     --font-color-blue: #003B99;
@@ -20,7 +20,7 @@
     --logo-color-white: #ffffff;
 
     --font-family: "Jost", sans-serif;
-    
+
     --line-height-lg: 5rem;
     --line-height-md: 2rem;
     --line-height-sm: 1rem;
@@ -36,9 +36,9 @@
 
     --font-size-xl: 4.5rem;
     --font-size-lg: 3rem;
-    --font-size-md: 1.5rem;
+    --font-size-md-2: 2rem;
+    --font-size-md: 1.6rem;
     --font-size-sm: 1.3rem;
-    --font-size-xsm: 1.2rem;
     --catogory-font-size: 1.2rem;
     --logo-font-size: 1.4rem;
 
@@ -70,14 +70,14 @@ html {
         font-size: 68.75%;
     }
 
-    .my-nav-inner div{
+    .my-nav-inner div {
         position: relative !important;
         transform-origin: top;
         transform: scale(1) !important;
         transition: 0.5s;
     }
 
-    .header-ctnr{
+    .header-ctnr {
         margin-top: 0 !important;
     }
 }
@@ -87,7 +87,7 @@ html {
         font-size: 62.5%;
     }
 
-    .my-nav-inner div{
+    .my-nav-inner div {
         position: absolute;
         left: 1rem;
         top: 6rem;
@@ -97,31 +97,48 @@ html {
         z-index: 1;
     }
 
-    .my-nav-inner div nav{
+    .my-nav-inner div nav {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: start !important;
     }
 
-    .nav-btn{
+    .nav-btn {
         display: block !important;
     }
 
-    .my-nav-inner{
+    .my-nav-inner {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
-    .header-ctnr div div{
+    .header-ctnr div div {
         display: flex;
         flex-direction: column-reverse;
     }
 
-    #header-text-sec{
+    .ctnr-1-mb-inner{
+        position: absolute;
+        right: -27rem;
+        bottom: -13rem;
+        background-color: #E9DB16;
+    }
+
+    #header-text-sec {
         display: flex;
         flex-direction: column;
+    }
+
+    .ctnr-1-mb-img {
+        width: 50%;
+    }
+
+    #ctnr-1-mb-inner-2 {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
 }
 
@@ -141,13 +158,15 @@ html {
 
 
 /* my E-commerce app start */
-.heading{
+
+/* navbar start */
+.heading {
     color: var(--font-color-white);
     font-family: var(--font-family);
     font-size: var(--font-size-sm);
 }
 
-.sign-in{
+.sign-in {
     background-color: var(--backgroun-color-white);
     font-size: var(--font-size-md);
     text-transform: uppercase;
@@ -157,12 +176,13 @@ html {
     border-radius: var(--border-radius);
 }
 
-.topbar , .my-nav{
+.topbar,
+.my-nav {
     padding: var(--ctnr-padding-sm);
     position: relative;
 }
 
-.nav-text{
+.nav-text {
     color: var(--font-color-black);
     font-size: var(--font-size-sm);
     text-transform: uppercase;
@@ -171,7 +191,7 @@ html {
     font-family: var(--font-family);
 }
 
-.cart-btn{
+.cart-btn {
     background-color: var(--font-color-black);
     border: none;
     color: var(--font-color-white);
@@ -182,11 +202,11 @@ html {
     text-transform: capitalize;
 }
 
-.cart-btn span{
+.cart-btn span {
     font-family: var(--font-family);
 }
 
-.nav-btn{
+.nav-btn {
     border: none;
     background-color: transparent;
     font-size: var(--font-size-lg);
@@ -195,14 +215,18 @@ html {
     right: 1rem;
 }
 
-.header-ctnr{
-    background: linear-gradient(to right ,#4D8BFC , #D5E6FE);
+/* navbar end */
+
+
+/* header start */
+.header-ctnr {
+    background: linear-gradient(to right, #4D8BFC, #D5E6FE);
     padding: 10rem 0;
     position: relative;
     transition: 0.5s;
 }
 
-.header-text{
+.header-text {
     color: var(--font-color-blue);
     font-size: var(--font-size-sm);
     font-family: var(--font-family);
@@ -210,7 +234,7 @@ html {
     font-weight: var(--font-weight-xl);
 }
 
-.header-text-2{
+.header-text-2 {
     color: var(--font-color-blue);
     font-size: var(--font-size-xl);
     font-family: var(--font-family);
@@ -218,7 +242,7 @@ html {
     font-weight: var(--font-weight-xl);
 }
 
-.header-text-3{
+.header-text-3 {
     color: var(--font-color-white);
     font-size: var(--font-size-md);
     font-family: var(--font-family);
@@ -245,21 +269,97 @@ html {
 .custom-shape-divider-bottom-1716577343 .shape-fill {
     fill: #FFFFFF;
 }
+
 /* header's waving's code end*/
+/* header end */
 
 
+
+/* contianer 1 start */
+.ctnr-1-mb {
+    background-color: var(--backgroun-color-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.ctnr-1-mb div :nth-child(2) {
+    z-index: 5;
+}
+
+.ctnr-1-mb-text {
+    color: var(--font-color-blue);
+    font-size: var(--font-size-xsm);
+    font-family: var(--font-family);
+}
+
+.ctnr-1-mb-text-2 {
+    color: var(--font-color-black);
+    font-size: var(--font-size-md-2);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-lg);
+    line-height: var(--line-height-md);
+}
+
+.ctnr-1-mb-text-3 {
+    color: var(--font-color-black);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ctnr-1-mb-inner {
+    background-color: var(--header-color-2);
+    height: 25rem;
+    width: 15rem;
+    border-radius: 100%;
+    position: absolute;
+    right: -17rem;
+    bottom: -13rem;
+}
+
+.ctnr-padding div:nth-child(3) div:nth-child(2) {
+    transform: rotate(10deg);
+}
+
+.ctnr-1-mb i {
+    color: var(--header-color);
+    font-size: var(--font-size-lg);
+}
+
+.ctnr-1-mb-text-4 {
+    color: var(--font-color-black);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+}
+
+.ctnr-1-mb-text-5 {
+    color: var(--font-color-black);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family);
+}
+
+/* contianer 1 end */
 /* my E-commerce app end */
 
 
-/* bydefalut classes */
+
+
+
+
+/* those classes which i used permanantly */
 .rough {
     border: .1rem solid rgb(0, 0, 0);
 }
 
-.hide{
+.hide {
     display: none;
 }
 
 html a {
     text-decoration: none;
+}
+
+.ctnr-padding {
+    padding: var(--ctnr-padding);
 }
