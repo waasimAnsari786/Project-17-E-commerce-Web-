@@ -34,8 +34,8 @@
     --margin-md: 2rem;
     --margin-sm: 1rem;
 
-    --font-size-xl: 3rem;
-    --font-size-lg: 2rem;
+    --font-size-xl: 4.5rem;
+    --font-size-lg: 3rem;
     --font-size-md: 1.5rem;
     --font-size-sm: 1.3rem;
     --font-size-xsm: 1.2rem;
@@ -76,6 +76,10 @@ html {
         transform: scale(1) !important;
         transition: 0.5s;
     }
+
+    .header-ctnr{
+        margin-top: 0 !important;
+    }
 }
 
 @media (max-width:992px) {
@@ -90,6 +94,7 @@ html {
         transform-origin: top;
         transform: scale(0);
         transition: 0.5s;
+        z-index: 1;
     }
 
     .my-nav-inner div nav{
@@ -107,6 +112,16 @@ html {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .header-ctnr div div{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    #header-text-sec{
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -157,13 +172,18 @@ html {
 }
 
 .cart-btn{
-    background-color: black;
+    background-color: var(--font-color-black);
     border: none;
     color: var(--font-color-white);
     padding: var(--buttton-padding);
     font-size: var(--font-size-sm);
     border-radius: var(--border-radius);
-    width: 7rem;
+    letter-spacing: var(--letter-spacing);
+    text-transform: capitalize;
+}
+
+.cart-btn span{
+    font-family: var(--font-family);
 }
 
 .nav-btn{
@@ -174,6 +194,59 @@ html {
     position: absolute;
     right: 1rem;
 }
+
+.header-ctnr{
+    background: linear-gradient(to right ,#4D8BFC , #D5E6FE);
+    padding: 10rem 0;
+    position: relative;
+    transition: 0.5s;
+}
+
+.header-text{
+    color: var(--font-color-blue);
+    font-size: var(--font-size-sm);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+    font-weight: var(--font-weight-xl);
+}
+
+.header-text-2{
+    color: var(--font-color-blue);
+    font-size: var(--font-size-xl);
+    font-family: var(--font-family);
+    letter-spacing: var(--letter-spacing);
+    font-weight: var(--font-weight-xl);
+}
+
+.header-text-3{
+    color: var(--font-color-white);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+}
+
+/* header's waving's code */
+.custom-shape-divider-bottom-1716577343 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1716577343 svg {
+    position: relative;
+    display: block;
+    width: calc(133% + 1.3px);
+    height: 147px;
+}
+
+.custom-shape-divider-bottom-1716577343 .shape-fill {
+    fill: #FFFFFF;
+}
+/* header's waving's code end*/
+
 
 /* my E-commerce app end */
 
