@@ -6,16 +6,18 @@
 
 /* here's my css variables */
 :root{
-    --backgroun-color: #F7F7F7;
-    --backgroun-color-2: #ffffff;
-    --font-color: #003B99;
+    --backgroun-lightgray: #F7F7F7;
+    --backgroun-color-white: #ffffff;
+    --font-color-blue: #003B99;
+    --font-color-white: #ffffff;
+    --font-color-black: #000000;
     --header-color: #4D8BFC;
     --header-color-2: #D5E6FE;
     --border-box-shadow-color: #F7F7F7;
     --catogory-color: #E7D6D6;
     --rating-color: #E9DB16;
-    --logo-color: #000000;
-    --logo-color-2: #ffffff;
+    --logo-color-black: #000000;
+    --logo-color-white: #ffffff;
 
     --font-family: "Jost", sans-serif;
     
@@ -24,19 +26,19 @@
     --line-height-sm: 1rem;
 
     --ctnr-padding: 10rem 0;
-    --ctnr-padding-sm: 2rem 1rem;
+    --ctnr-padding-sm: 1rem;
     --mb-padding: 3.5rem;
-    --buttton-padding: 1.5rem;
+    --buttton-padding: 1rem;
 
     --margin-lg: 3rem;
     --margin-md: 2rem;
     --margin-sm: 1rem;
 
-    --font-size-xl: 5rem;
-    --font-size-lg: 3rem;
-    --font-size-md: 2rem;
-    --font-size-sm: 1.5rem;
-    --font-size-xsm: 1.3rem;
+    --font-size-xl: 4rem;
+    --font-size-lg: 2rem;
+    --font-size-md: 1.5rem;
+    --font-size-sm: 1.3rem;
+    --font-size-xsm: 1.2rem;
     --catogory-font-size: 1.2rem;
     --logo-font-size: 1.4rem;
 
@@ -44,6 +46,8 @@
     --font-weight-lg: 500;
     --font-weight-md: 400;
     --font-weight-sm: 300;
+
+    --letter-spacing: .1rem;
 }
 
 
@@ -88,9 +92,28 @@ html {
 
 
 /* my E-commerce app start */
+.heading{
+    color: var(--font-color-white);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+}
+
+.sign-in{
+    background-color: var(--backgroun-color-white);
+    font-size: var(--font-size-md);
+    text-transform: uppercase;
+    border: none;
+    font-family: var(--font-family);
+    padding: var(--buttton-padding);
+    border-radius: .5rem;
+}
+
+.topbar{
+    padding: var(--ctnr-padding-sm);
+}
 
 /* my E-commerce app end */
 
 .rough {
-    border: .1rem solid rgb(0, 0, 0);
+    border: .1rem solid rgb(255, 255, 255);
 }
