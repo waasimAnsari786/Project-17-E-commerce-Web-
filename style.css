@@ -1,7 +1,49 @@
-.poppins-thin {
-    font-family: "Poppins", sans-serif;
-    font-weight: 100;
-    font-style: normal;
+.jost{
+  font-family: "Jost", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* here's my css variables */
+:root{
+    --backgroun-color: #F7F7F7;
+    --backgroun-color-2: #ffffff;
+    --font-color: #003B99;
+    --header-color: #4D8BFC;
+    --header-color-2: #D5E6FE;
+    --border-box-shadow-color: #F7F7F7;
+    --catogory-color: #E7D6D6;
+    --rating-color: #E9DB16;
+    --logo-color: #000000;
+    --logo-color-2: #ffffff;
+
+    --font-family: "Jost", sans-serif;
+    
+    --line-height-lg: 5rem;
+    --line-height-md: 2rem;
+    --line-height-sm: 1rem;
+
+    --ctnr-padding: 10rem 0;
+    --ctnr-padding-sm: 2rem 1rem;
+    --mb-padding: 3.5rem;
+    --buttton-padding: 1.5rem;
+
+    --margin-lg: 3rem;
+    --margin-md: 2rem;
+    --margin-sm: 1rem;
+
+    --font-size-xl: 5rem;
+    --font-size-lg: 3rem;
+    --font-size-md: 2rem;
+    --font-size-sm: 1.5rem;
+    --font-size-xsm: 1.3rem;
+    --catogory-font-size: 1.2rem;
+    --logo-font-size: 1.4rem;
+
+    --font-weight-xl: bold;
+    --font-weight-lg: 500;
+    --font-weight-md: 400;
+    --font-weight-sm: 300;
 }
 
 
