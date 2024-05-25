@@ -159,6 +159,10 @@ html {
     .ctnr-2-mb-text , .ctnr-2-mb-text-2{
         align-self: flex-start !important;
     }
+
+    .ctnr-2-mb-text-4{
+        text-align: left !important;
+    }
 }
 
 @media (max-width:576px) {
@@ -377,6 +381,11 @@ html {
 }
 
 .ctnr-2-mb-text-2{
+    color: var(--font-color-black);
+    font-size: var(--font-size-md-2);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-lg);
+    line-height: var(--line-height-md);
     align-self: flex-end;
 }
 
@@ -407,6 +416,13 @@ html {
     padding: 1.2rem 2rem;
     display: inline-block;
     align-self: flex-start;
+}
+
+.ctnr-2-mb-text-4{
+    color: var(--backgroun-lightgray);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+    text-align: right;
 }
 
 /* contianer 2 end */
