@@ -6,7 +6,7 @@
 
 /* here's my css variables */
 :root {
-    --backgroun-lightgray: #F7F7F7;
+    --backgroun-lightgray: #707070;
     --backgroun-color-white: #ffffff;
     --font-color-blue: #003B99;
     --font-color-white: #ffffff;
@@ -25,7 +25,7 @@
     --line-height-md: 2rem;
     --line-height-sm: 1rem;
 
-    --ctnr-padding: 10rem 0;
+    --ctnr-padding: 10rem 0 0 0;
     --ctnr-padding-sm: 1rem;
     --mb-padding: 3.5rem;
     --buttton-padding: 1rem;
@@ -52,6 +52,11 @@
     --border-radius: .5rem;
 }
 
+/* home last container's animation */
+@keyframes pic-ani {
+    0%{background-color: var(--header-color);}
+    100%{background-color: var(--header-color-2);}
+}
 
 
 /* my font size's media query start */
@@ -145,6 +150,14 @@ html {
 @media (max-width:768px) {
     html {
         font-size: 56.25%;
+    }
+
+    .ctnr-2 div:nth-child(2){
+        order: -1;
+    }
+
+    .ctnr-2-mb-text , .ctnr-2-mb-text-2{
+        align-self: flex-start !important;
     }
 }
 
@@ -318,7 +331,7 @@ html {
     bottom: -13rem;
 }
 
-.ctnr-padding div:nth-child(3) div:nth-child(2) {
+.ctnr-1 div:nth-child(3) div:nth-child(2) {
     transform: rotate(10deg);
 }
 
@@ -328,18 +341,75 @@ html {
 }
 
 .ctnr-1-mb-text-4 {
-    color: var(--font-color-black);
+    color: var(--backgroun-lightgray);
     font-size: var(--font-size-md);
     font-family: var(--font-family);
 }
 
 .ctnr-1-mb-text-5 {
-    color: var(--font-color-black);
+    color: var(--backgroun-lightgray);
     font-size: var(--font-size-sm);
     font-family: var(--font-family);
 }
 
 /* contianer 1 end */
+
+
+
+
+/* contianer 2 start */
+.ctnr-2-text{
+    color: var(--font-color-black);
+    font-size: var(--font-size-lg);
+    font-family: var(--font-family);
+    font-weight: var(--font-weight-lg);
+}
+
+.ctnr-2-mb-text{
+    color: var(--header-color);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+    background-color: var(--header-color-2);
+    border-radius: 100%;
+    padding: 1.2rem 2rem;
+    display: inline-block;
+    align-self: flex-end;
+}
+
+.ctnr-2-mb-text-2{
+    align-self: flex-end;
+}
+
+.ctnr-2-mb{
+    position: relative;
+    border: .1rem solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.ctnr-2-img{
+    background-color: var(--header-color);
+    border-radius: 100%;
+    animation: pic-ani 2s alternate infinite ;
+}
+
+.ctnr-2-img-parent{
+    border: .3rem solid var(--header-color-2);
+    border-radius: 100%;
+}
+
+.ctnr-2-mb-text-3{
+    color: var(--header-color);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+    background-color: var(--header-color-2);
+    border-radius: 100%;
+    padding: 1.2rem 2rem;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+/* contianer 2 end */
 /* my E-commerce app end */
 
 
