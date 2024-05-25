@@ -13,7 +13,7 @@
     --font-color-black: #000000;
     --header-color: #4D8BFC;
     --header-color-2: #D5E6FE;
-    --border-box-shadow-color: #F7F7F7;
+    --border-box-shadow-color: #b3b1b1;
     --catogory-color: #E7D6D6;
     --rating-color: #E9DB16;
     --logo-color-black: #000000;
@@ -29,6 +29,7 @@
     --ctnr-padding-sm: 1rem;
     --mb-padding: 3.5rem;
     --buttton-padding: 1rem;
+    --add-to-cart-buttton-padding: 1rem 1.5rem;
 
     --margin-lg: 3rem;
     --margin-md: 2rem;
@@ -357,6 +358,72 @@ html {
 }
 
 /* contianer 1 end */
+
+
+
+
+/* products section start */
+.ctnr-1-mb-text-2 span{
+    text-decoration: line-through;
+}
+
+.product-btn{
+    border: .1rem solid rgb(197, 197, 197);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-btn button{
+    border: none;
+    background-color: transparent;
+    color: var(--font-color-black);
+    font-weight: var(--font-weight-lg);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    padding: .3rem 1rem;
+}
+
+.product-mb{
+    box-shadow: .2rem .4rem 1rem var(--border-box-shadow-color);
+    border-radius: var(--border-radius);
+}
+
+.product-text{
+    color: var(--backgroun-lightgray);
+    background-color: var(--catogory-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    padding: var(--buttton-padding);
+    text-transform: capitalize;
+    display: inline;
+    border-radius: 6rem;
+}
+
+.product-icon-sec i{
+    color: var(--rating-color);
+    font-size: 1rem;
+}
+
+.add-to-cart-btn{
+    background-color: var(--font-color-black);
+    color: var(--font-color-white);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    text-transform: capitalize;
+    padding: var(--add-to-cart-buttton-padding);
+    border-radius: var(--border-radius);
+    transition: 0.5s;
+}
+
+.add-to-cart-btn:hover{
+    border: .2rem solid var(--font-color-black);
+    color: var(--font-color-black);
+    background-color: transparent;
+}
+
+/* products section end */
+
 
 
 
