@@ -410,6 +410,48 @@ html {
 }
 
 /* contianer 2 end */
+
+
+
+/* footer start */
+.footer-pages-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.footer-input{
+    border-bottom: .1rem solid var(--backgroun-color-white);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    color: var(--backgroun-color-white);
+    background-color: var(--font-color-black);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    padding: 1rem;
+}
+
+.footer-input::placeholder{
+    color:var(--border-box-shadow-color);
+    text-transform: capitalize;
+}
+
+.footer-ctnr{
+    padding: 10rem 0;
+}
+
+.author{
+    border-top: .1rem solid var(--font-color-white);
+    padding: 5rem 0 0 0;
+}
+
+.author a{
+    text-decoration: underline;
+    color: var(--font-color-white);
+}
+/* footer end */
 /* my E-commerce app end */
 
 
