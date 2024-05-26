@@ -1,26 +1,30 @@
 // navbar's code
-let navBtn = document.querySelector(".nav-btn");
-let navbarParent = document.querySelector(".my-nav");
-let hiddenNavDiv = document.querySelector(".my-nav-inner div");
-let count = true;
+import { navBarShowHide } from "./functions.js";
 
-const navBarShowHide = () => {
-    let headerCtnr = document.querySelector(".header-ctnr");
-    if (count) {
-            hiddenNavDiv.style.transform = 'scale(1)';
-            headerCtnr.style.marginTop = '20rem';
-            count = false;
-        }
-
-        else{
-            hiddenNavDiv.style.transform = 'scale(0)';
-            headerCtnr.style.marginTop = '0rem';
-            count = true;
-        }
-};
+import { navbarParent, productStock } from "./variables.js";
 
 navbarParent.addEventListener("click" , (evt) => {
     if (evt.target.classList.contains("fa-solid")) {
         navBarShowHide();
     }
 }); 
+
+// navbar's code end
+
+// products section's code
+import { productMainDiv } from "./variables.js";
+import { chooseQuantityOfProduct } from "./functions.js";
+// import { chooseQuantityOfProduct2 } from "./functions.js";
+
+let couter = 1;
+productMainDiv.addEventListener("click", (evt) => {
+    console.log(evt.target);
+    if (evt.target.classList.contains("plus-btn")) {
+        chooseQuantityOfProduct(true);
+    } else if (evt.target.classList.contains("minus-btn")) {
+        chooseQuantityOfProduct(false);
+    }
+});
+
+
+// products section's code end
