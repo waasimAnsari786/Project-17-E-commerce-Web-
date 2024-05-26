@@ -414,6 +414,7 @@ html {
     padding: var(--add-to-cart-buttton-padding);
     border-radius: var(--border-radius);
     transition: 0.5s;
+    border:.2rem solid transparent;
 }
 
 .add-to-cart-btn:hover{
