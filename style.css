@@ -452,7 +452,6 @@ html {
     position: absolute;
     top: 2rem;
     right: 0;
-    z-index: 100;
     font-size: var(--font-size-md);
     transform: translateX(23rem);
     transition: transform 0.5s;  

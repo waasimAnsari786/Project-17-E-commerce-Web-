@@ -1,6 +1,6 @@
 // navbar's object
 export let countObj = {
-    count : true,
+    count : false,
 };
 
 // product's object

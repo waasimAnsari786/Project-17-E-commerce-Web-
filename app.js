@@ -28,8 +28,8 @@ productMainDiv.addEventListener("click", (evt) => {
         chooseQuantityOfProduct(false, updatedElem, undefined);
     }
 
-    else if (evt.target.classList.contains("add-to-cart-btn")) {
-        addToCartBtnFunc();
+    else if (evt.target.classList.contains("add-to-cart-btn") || evt.target.classList.contains("fa-solid") || evt.target.innerText.toLowerCase() === 'add to cart') {
+        addToCartBtnFunc(evt.target);
     }
 });
 
