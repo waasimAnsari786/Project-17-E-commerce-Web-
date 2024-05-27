@@ -164,6 +164,12 @@ html {
     .ctnr-2-mb-text-4{
         text-align: left !important;
     }
+
+    #topbar-btn-sec{
+        display: flex;
+        justify-content: center !important;
+        align-items: center;
+    }
 }
 
 @media (max-width:576px) {
@@ -231,6 +237,12 @@ html {
     padding: 0;
     position: absolute;
     right: 1rem;
+}
+
+#topbar-btn-sec{
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 /* navbar end */
@@ -367,6 +379,14 @@ html {
     text-decoration: line-through;
 }
 
+.product-btn-sec div:nth-child(2) div:nth-child(1){
+    border-radius: .5rem 0 0 .5rem;
+}
+
+.product-btn-sec div:nth-child(2) div:nth-child(3){
+    border-radius: 0 .5rem .5rem 0;
+}
+
 .product-btn{
     border: .1rem solid rgb(197, 197, 197);
     display: flex;
@@ -421,6 +441,21 @@ html {
     border: .2rem solid var(--font-color-black);
     color: var(--font-color-black);
     background-color: transparent;
+}
+
+.product-added-notification-div{
+    background-color: var(--font-color-black);
+    border-radius: var(--border-radius);
+    padding: var(--buttton-padding);
+    color: var(--font-color-white);
+    font-family: var(--font-family);
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    z-index: 100;
+    font-size: var(--font-size-md);
+    transform: translateX(23rem);
+    transition: transform 0.5s;  
 }
 
 /* products section end */
@@ -545,7 +580,7 @@ html {
 
 /* those classes which i used permanantly */
 .rough {
-    border: .1rem solid rgb(0, 0, 0);
+    border: .1rem solid rgb(255, 255, 255);
 }
 
 .hide {
