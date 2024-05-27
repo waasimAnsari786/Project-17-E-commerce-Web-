@@ -570,6 +570,39 @@ html {
     color: var(--font-color-white);
 }
 /* footer end */
+
+
+
+
+/* add to cart page */
+.add-to-cart-final-total-div{
+    background-color: transparent;
+    border: .3rem solid var(--font-color-black);
+}
+
+.final-total-heading{
+    color: var(--font-color-black);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+}
+
+.fianl-total-sub-heading{
+    color: var(--backgroun-lightgray);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+}
+
+.fianl-total{
+    color: var(--font-color-black);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-xl);
+}
+
+.add-to-cart-ctnr{
+    padding: 10rem 0;
+}
+/* add to cart page end */
 /* my E-commerce app end */
 
 
