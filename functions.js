@@ -1,37 +1,22 @@
 // navbar's code
 
-import { hiddenNavDiv } from "./variables.js";
+import { hiddenNavDiv , navbarParent } from "./variables.js";
 import { countObj } from "./objects.js";
 let count = 1;
 
 export const navBarShowHide = () => {
-	let headerCtnr = document.querySelector(".header-ctnr");
-	let cnFormMainSec = document.querySelector(".cn-form-main-sec");
 	if (!countObj.count) {
 		setTimeout(() => {
 			hiddenNavDiv.style.transform = 'scale(1)';
 		}, 100);
-
-		if (headerCtnr) {
-			headerCtnr.style.marginTop = '20rem';
-		}
-		
-		else{
-			cnFormMainSec.style.marginTop = '20rem';
-		}
+		navbarParent.style.marginBottom = '20rem';
 		countObj.count = true;
 	}
 
 	else {
 		hiddenNavDiv.style.transform = 'scale(0)';
 		setTimeout(() => {
-			if (headerCtnr) {
-				headerCtnr.style.marginTop = '0rem';
-			}
-			
-			else{
-				cnFormMainSec.style.marginTop = '0rem';
-			}
+			navbarParent.style.marginBottom = '0rem';
 		}, 50);
 		countObj.count = false;
 	}
@@ -138,7 +123,6 @@ export const updateCartTextFunc = (targetedElem , createNotifyDivCallbackFunc , 
 		cartText.innerText = count++;
 	}
 	return cartText.innerText;
-
 };
 
 // this fucntion is for creating an object for saving data on local storage

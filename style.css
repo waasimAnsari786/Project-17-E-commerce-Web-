@@ -204,6 +204,7 @@ html {
 .my-nav {
     padding: var(--ctnr-padding-sm);
     position: relative;
+    transition: 0.5s;
 }
 
 .my-nav-2{
@@ -259,7 +260,6 @@ html {
     background: linear-gradient(to right, #4D8BFC, #D5E6FE);
     padding: 10rem 0;
     position: relative;
-    transition: 0.5s;
 }
 
 .header-text {
@@ -634,7 +634,6 @@ html {
 
 .cn-form-main-sec{
     margin-bottom: 10rem;
-    transition: 0.5s;
 }
 /* contact page's code end */
 
