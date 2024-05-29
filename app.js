@@ -36,11 +36,9 @@ productMainDiv.addEventListener("click", (evt) => {
 		chooseQuantityOfProduct(false, updatedElem, undefined);
 	}
 
-	else if (evt.target.classList.contains("add-to-cart-btn") || evt.target.classList.contains("fa-solid") || evt.target.innerText.toLowerCase() === 'add to cart') {
+	else if (evt.target.classList.contains("add-to-cart-btn") || evt.target.classList.contains("fa-cart-shopping") || evt.target.innerText.toLowerCase() === 'add to cart') {
 		addToCartBtnFunc(evt.target, updateCartTextFunc , createAnObjForSavingDataOnLocalStorageFunc);
 	}
 });
 
 // products section's code end
-import { produtObj } from "./objects.js";
-console.log(produtObj);

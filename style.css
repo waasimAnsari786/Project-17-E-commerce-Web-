@@ -634,6 +634,7 @@ html {
 
 .cn-form-main-sec{
     margin-bottom: 10rem;
+    transition: 0.5s;
 }
 /* contact page's code end */
 

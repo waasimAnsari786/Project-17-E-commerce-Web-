@@ -1,25 +1,39 @@
 // navbar's code
 
-import { hiddenNavDiv, productStock } from "./variables.js";
+import { hiddenNavDiv } from "./variables.js";
 import { countObj } from "./objects.js";
 let count = 1;
 
 export const navBarShowHide = () => {
 	let headerCtnr = document.querySelector(".header-ctnr");
+	let cnFormMainSec = document.querySelector(".cn-form-main-sec");
 	if (!countObj.count) {
 		setTimeout(() => {
 			hiddenNavDiv.style.transform = 'scale(1)';
 		}, 100);
-		headerCtnr.style.marginTop = '20rem';
-		countObj.count = 1;
+
+		if (headerCtnr) {
+			headerCtnr.style.marginTop = '20rem';
+		}
+		
+		else{
+			cnFormMainSec.style.marginTop = '20rem';
+		}
+		countObj.count = true;
 	}
 
 	else {
 		hiddenNavDiv.style.transform = 'scale(0)';
 		setTimeout(() => {
-			headerCtnr.style.marginTop = '0rem';
+			if (headerCtnr) {
+				headerCtnr.style.marginTop = '0rem';
+			}
+			
+			else{
+				cnFormMainSec.style.marginTop = '0rem';
+			}
 		}, 50);
-		countObj.count = 0;
+		countObj.count = false;
 	}
 };
 
@@ -35,16 +49,16 @@ export const navBarShowHide = () => {
 
 // this function is for creating a div with some children elements on add to cart page and add the saved data on local storage inside this div
 const createDivOnAddToCartPageFunc = () => {
-	// let mainDiv = document.createElement("div");
-	// mainDiv.classList.add("main-div-of-add-to-cart" , "container");
-	// mainDiv.innerHTML = `<div class="row">
-	// 						<div class="col-1 rough"></div>
-	// 						<div class="col-1 rough"></div>
-	// 						<div class="col-1 rough"></div>
-	// 						<div class="col-1 rough"></div>
-	// 						<div class="col-2 rough"></div>
-	// 						<div class="col-2 rough"></div>
-	// 					</div>`;
+	let mainDiv = document.createElement("div");
+	mainDiv.classList.add("main-div-of-add-to-cart" , "container");
+	mainDiv.innerHTML = `<div class="row">
+							<div class="col-1 rough"></div>
+							<div class="col-1 rough"></div>
+							<div class="col-1 rough"></div>
+							<div class="col-1 rough"></div>
+							<div class="col-2 rough"></div>
+							<div class="col-2 rough"></div>
+						</div>`;
 
 	let targetedDiv = document.querySelector(".add-to-cart-ctnr");
 	console.log(targetedDiv);
@@ -61,9 +75,8 @@ const createDivOnAddToCartPageFunc = () => {
 // products section's code
 
 // function of choosing the quantity of products
-import { productMinusBtn, productNumBtn, productPlusBtn, } from "./variables.js";
 import { produtObj } from "./objects.js";
-0
+
 export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
 	countObj.count = updatedElem.innerText;
 	if (increment) {

@@ -1,20 +1,23 @@
 // navbar's object
 export let countObj = {
-	count: 0,
+	count: false,
 	arr: [],
 };
 
 // product'sobject
-import { productImg, productCatogry, productMinusBtn, productName, productNumBtn, productPlusBtn, productPrice , productAddToCartBtn } from "./variables.js";
+import { productImg, productCatogry, productMinusBtn, productName, productNumBtn, productPlusBtn, productPrice, productAddToCartBtn } from "./variables.js";
 
-export let splitedPrice = productPrice.innerText.split("Rs");
+let splitedPrice = "0";
+if (productPrice) {
+    splitedPrice = productPrice.innerText.split("Rs");
+}
 
 export const produtObj = {
-	pImg: productImg.src,
-	pCatagory: productCatogry.innerText,
-	pMinusBtn: productMinusBtn.innerText,
-	pName: productName.innerText,
-	pNumBtn: productNumBtn.innerText,
-	pPlusBtn: productPlusBtn.innerText,
-	pPrice: splitedPrice[0],
+    pImg: productImg ? productImg.src : "",
+    pCatagory: productCatogry ? productCatogry.innerText : "",
+    pMinusBtn: productMinusBtn ? productMinusBtn.innerText : "",
+    pName: productName ? productName.innerText : "",
+    pNumBtn: productNumBtn ? productNumBtn.innerText : "",
+    pPlusBtn: productPlusBtn ? productPlusBtn.innerText : "",
+    pPrice: splitedPrice[0],
 };
