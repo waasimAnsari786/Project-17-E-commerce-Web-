@@ -2,72 +2,134 @@
 
 import { hiddenNavDiv, productStock } from "./variables.js";
 import { countObj } from "./objects.js";
+let count = 1;
 
 export const navBarShowHide = () => {
-  let headerCtnr = document.querySelector(".header-ctnr");
-  if (!countObj.count) {
-    setTimeout(() => {
-      hiddenNavDiv.style.transform = 'scale(1)';
-    }, 100);
-    headerCtnr.style.marginTop = '20rem';
-    countObj.count = true;
-  }
+	let headerCtnr = document.querySelector(".header-ctnr");
+	if (!countObj.count) {
+		setTimeout(() => {
+			hiddenNavDiv.style.transform = 'scale(1)';
+		}, 100);
+		headerCtnr.style.marginTop = '20rem';
+		countObj.count = 1;
+	}
 
-  else {
-    hiddenNavDiv.style.transform = 'scale(0)';
-    setTimeout(() => {
-      headerCtnr.style.marginTop = '0rem';
-    }, 50);
-    countObj.count = false;
-  }
+	else {
+		hiddenNavDiv.style.transform = 'scale(0)';
+		setTimeout(() => {
+			headerCtnr.style.marginTop = '0rem';
+		}, 50);
+		countObj.count = 0;
+	}
 };
 
 // navbar's code end
 
+
+
+
+
+
+
+
+
 // products section's code
 
 // function of choosing the quantity of products
-import { productMinusBtn , productNumBtn , productPlusBtn } from "./variables.js";
+import { productMinusBtn, productNumBtn, productPlusBtn, } from "./variables.js";
+import { produtObj } from "./objects.js";
 
 export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
-  countObj.count = updatedElem.innerText;
-  if (increment) {
-    countObj.count++;
-    if (countObj.count > stock) {
-      countObj.count = stock;
-    }
-  } else {
-    countObj.count--;
-    if (countObj.count < 1) {
-      countObj.count = 1;
-    }
-  }
-  return updatedElem.innerText = countObj.count;
+	countObj.count = updatedElem.innerText;
+	if (increment) {
+		countObj.count++;
+		if (countObj.count > stock) {
+			countObj.count = stock;
+		}
+	} else {
+		countObj.count--;
+		if (countObj.count < 1) {
+			countObj.count = 1;
+		}
+	}
+
+	updatedElem.innerText = countObj.count;
 };
 // function of choosing the quantity of products end
 
 
 
+// function for getting data from local storage
+const getdata = (keyName) => {
+	return JSON.parse(localStorage.getItem(keyName));
+};
+
+
+// this function is for creating a notification div when user will add to cart
+const createProductAddedNotiDivFunc = (targetedElemID) => {
+	countObj.count++;
+
+	let productAddedNotificationdiv = document.createElement("div");
+	productAddedNotificationdiv.classList.add("product-added-notification-div");
+	productAddedNotificationdiv.innerText = `Product ID ${targetedElemID} has been added`;
+	document.querySelector("body").prepend(productAddedNotificationdiv);
+
+	productAddedNotificationdiv.style.position = 'fixed';
+	productAddedNotificationdiv.style.transform = 'translateX(0rem)';
+	productAddedNotificationdiv.style.zIndex = countObj.count;
+
+	setTimeout(() => {
+		productAddedNotificationdiv.remove();
+	}, 2000);
+};
+
+
+// function of updated the cart button's text which is placed in the navbar
+export const updateCartTextFunc = (targetedElem) => {
+	let targetElemId = targetedElem.closest(".product-mb").getAttribute("id").split("-");
+	let splitedId = targetElemId.at(-1);
+	
+	let joinedId = targetElemId.join("-");
+	let cartText = document.querySelector(".cart-btn span").nextElementSibling;
+	
+	if (!countObj.arr.includes(joinedId)) {
+		createProductAddedNotiDivFunc(splitedId);
+		countObj.arr.push(joinedId)
+		countObj.arr = [... new Set(countObj.arr)];
+		cartText.innerText = count++;
+	}
+	return cartText.innerText;
+
+};
+
+// this fucntion is for creating an object for saving data on local storage
+export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem , cartText) => {
+	let newProductObj = Object.assign({}, produtObj);
+	newProductObj.pImg = targetedElem.closest(".product-mb").querySelector(".product-img img").src;
+	newProductObj.pCatagory = targetedElem.closest(".product-mb").querySelector(".product-text").innerText;
+	newProductObj.pName = targetedElem.closest(".product-mb").querySelector(".ctnr-2-text").innerText;
+	newProductObj.pPrice = targetedElem.closest(".product-mb").querySelector(".ctnr-1-mb-text-2.mt-5").innerText.split("Rs")[0];
+	newProductObj.pStock = targetedElem.closest(".product-mb").querySelector(".product-stock").innerText.split(" ")[3];
+	newProductObj.pPlusBtn = targetedElem.closest(".product-mb").querySelector(".plus-btn");
+	newProductObj.pMinusBtn = targetedElem.closest(".product-mb").querySelector(".minus-btn");
+	newProductObj.pNumBtn = targetedElem.closest(".product-mb").querySelector(".num-btn");
+	newProductObj.cartText = cartText;
+	
+	let arrForGetDataFromLocalStorage = getdata("productDetails") || [];
+	
+	if (!arrForGetDataFromLocalStorage.find(currElem => currElem.pImg === newProductObj.pImg)) {
+		arrForGetDataFromLocalStorage.unshift(newProductObj);
+	}
+	
+	localStorage.setItem("productDetails", JSON.stringify(arrForGetDataFromLocalStorage));
+};
+
 // function of add to cart button
-export const addToCartBtnFunc = (targetedElem) => {
-  countObj.count++;
-  let targetElemId = targetedElem.closest(".product-mb").getAttribute("id").split("-");
-  let splitedId = targetElemId[targetElemId.length - 1]
 
-  let productAddedNotificationdiv = document.createElement("div");
-  productAddedNotificationdiv.classList.add("product-added-notification-div");
-  productAddedNotificationdiv.innerText = `Product ID ${splitedId} has been added`;
-  document.querySelector("body").prepend(productAddedNotificationdiv);
+export const addToCartBtnFunc = (targetedElem , updateCartTextCallbackFunc , createObjFroSavingDatacallBackFunc) => {
+	let retunredUpdatedCartText = updateCartTextCallbackFunc(targetedElem);
+	createObjFroSavingDatacallBackFunc(targetedElem , retunredUpdatedCartText);
 
-  productAddedNotificationdiv.style.position = 'fixed';
-  productAddedNotificationdiv.style.transform = 'translateX(0)';
-  productAddedNotificationdiv.style.zIndex = countObj.count;
-
-  setTimeout(() => {
-    productAddedNotificationdiv.remove();
-  }, 2000);
-
-  return productAddedNotificationdiv;
 };
 // function of add to cart button end
 
