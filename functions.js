@@ -31,6 +31,31 @@ export const navBarShowHide = () => {
 
 
 
+// add to cart page's code start
+
+// this function is for creating a div with some children elements on add to cart page and add the saved data on local storage inside this div
+const createDivOnAddToCartPageFunc = () => {
+	// let mainDiv = document.createElement("div");
+	// mainDiv.classList.add("main-div-of-add-to-cart" , "container");
+	// mainDiv.innerHTML = `<div class="row">
+	// 						<div class="col-1 rough"></div>
+	// 						<div class="col-1 rough"></div>
+	// 						<div class="col-1 rough"></div>
+	// 						<div class="col-1 rough"></div>
+	// 						<div class="col-2 rough"></div>
+	// 						<div class="col-2 rough"></div>
+	// 					</div>`;
+
+	let targetedDiv = document.querySelector(".add-to-cart-ctnr");
+	console.log(targetedDiv);
+};
+
+
+
+
+
+
+
 
 
 // products section's code
@@ -38,7 +63,7 @@ export const navBarShowHide = () => {
 // function of choosing the quantity of products
 import { productMinusBtn, productNumBtn, productPlusBtn, } from "./variables.js";
 import { produtObj } from "./objects.js";
-
+0
 export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
 	countObj.count = updatedElem.innerText;
 	if (increment) {
@@ -85,7 +110,7 @@ const createProductAddedNotiDivFunc = (targetedElemID) => {
 
 
 // function of updated the cart button's text which is placed in the navbar
-export const updateCartTextFunc = (targetedElem) => {
+export const updateCartTextFunc = (targetedElem , createNotifyDivCallbackFunc , createMainDivInAddToCartPageCallbackFunc) => {
 	let targetElemId = targetedElem.closest(".product-mb").getAttribute("id").split("-");
 	let splitedId = targetElemId.at(-1);
 	
@@ -93,7 +118,8 @@ export const updateCartTextFunc = (targetedElem) => {
 	let cartText = document.querySelector(".cart-btn span").nextElementSibling;
 	
 	if (!countObj.arr.includes(joinedId)) {
-		createProductAddedNotiDivFunc(splitedId);
+		createNotifyDivCallbackFunc(splitedId);
+		createMainDivInAddToCartPageCallbackFunc();
 		countObj.arr.push(joinedId)
 		countObj.arr = [... new Set(countObj.arr)];
 		cartText.innerText = count++;
@@ -104,7 +130,7 @@ export const updateCartTextFunc = (targetedElem) => {
 
 // this fucntion is for creating an object for saving data on local storage
 export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem , cartText) => {
-	let newProductObj = Object.assign({}, produtObj);
+	let newProductObj = Object.assign({} , produtObj);
 	newProductObj.pImg = targetedElem.closest(".product-mb").querySelector(".product-img img").src;
 	newProductObj.pCatagory = targetedElem.closest(".product-mb").querySelector(".product-text").innerText;
 	newProductObj.pName = targetedElem.closest(".product-mb").querySelector(".ctnr-2-text").innerText;
@@ -127,11 +153,9 @@ export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem , cartTe
 // function of add to cart button
 
 export const addToCartBtnFunc = (targetedElem , updateCartTextCallbackFunc , createObjFroSavingDatacallBackFunc) => {
-	let retunredUpdatedCartText = updateCartTextCallbackFunc(targetedElem);
+	let retunredUpdatedCartText = updateCartTextCallbackFunc(targetedElem , createProductAddedNotiDivFunc , createDivOnAddToCartPageFunc);
 	createObjFroSavingDatacallBackFunc(targetedElem , retunredUpdatedCartText);
-
 };
 // function of add to cart button end
-
 
 // products section's code end

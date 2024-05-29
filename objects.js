@@ -5,7 +5,7 @@ export let countObj = {
 };
 
 // product'sobject
-import { productImg, productCatogry, productMinusBtn, productName, productNumBtn, productPlusBtn, productPrice, productAddToCartBtn } from "./variables.js";
+import { productImg, productCatogry, productMinusBtn, productName, productNumBtn, productPlusBtn, productPrice , productAddToCartBtn } from "./variables.js";
 
 export let splitedPrice = productPrice.innerText.split("Rs");
 

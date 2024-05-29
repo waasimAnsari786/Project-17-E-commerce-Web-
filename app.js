@@ -42,3 +42,5 @@ productMainDiv.addEventListener("click", (evt) => {
 });
 
 // products section's code end
+import { produtObj } from "./objects.js";
+console.log(produtObj);

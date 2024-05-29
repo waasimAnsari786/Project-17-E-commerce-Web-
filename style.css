@@ -206,6 +206,12 @@ html {
     position: relative;
 }
 
+.my-nav-2{
+    padding: var(--ctnr-padding-sm);
+    position: relative;
+    box-shadow: .4rem .8rem 1rem var(--border-box-shadow-color);
+}
+
 .nav-text {
     color: var(--font-color-black);
     font-size: var(--font-size-sm);
@@ -603,6 +609,35 @@ html {
     padding: 10rem 0;
 }
 /* add to cart page end */
+
+
+
+
+
+
+/* contact page's code start */
+.cn-form-text{
+    color: var(--font-color-black);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family);
+}
+
+.cn-form{
+    font-family: var(--font-family);
+    outline: none;
+    font-size: var(--font-size-md);    
+}
+
+.cn-form::placeholder{
+    text-transform: capitalize;
+}
+
+.cn-form-main-sec{
+    margin-bottom: 10rem;
+}
+/* contact page's code end */
+
+
 /* my E-commerce app end */
 
 
@@ -612,7 +647,7 @@ html {
 
 /* those classes which i used permanantly */
 .rough {
-    border: .1rem solid rgb(255, 255, 255);
+    border: .1rem solid rgb(0, 0, 0);
 }
 
 .hide {
