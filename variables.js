@@ -19,3 +19,7 @@ export let productAddToCartBtn = document.querySelector(".add-to-cart-btn");
 export let productStock = document.querySelector("#laptop-stock span");
 export let productPrice = document.querySelector("#laptop-price");
 // products section's variables end
+
+
+// add to cart page variables
+export let targetedDiv = document.querySelector(".add-to-cart-ctnr");

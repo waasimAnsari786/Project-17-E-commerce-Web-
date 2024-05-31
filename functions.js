@@ -30,25 +30,6 @@ export const navBarShowHide = () => {
 
 
 
-// add to cart page's code start
-
-// this function is for creating a div with some children elements on add to cart page and add the saved data on local storage inside this div
-const createDivOnAddToCartPageFunc = () => {
-	let mainDiv = document.createElement("div");
-	mainDiv.classList.add("main-div-of-add-to-cart" , "container");
-	mainDiv.innerHTML = `<div class="row">
-							<div class="col-1 rough"></div>
-							<div class="col-1 rough"></div>
-							<div class="col-1 rough"></div>
-							<div class="col-1 rough"></div>
-							<div class="col-2 rough"></div>
-							<div class="col-2 rough"></div>
-						</div>`;
-
-	let targetedDiv = document.querySelector(".add-to-cart-ctnr");
-	console.log(targetedDiv);
-};
-
 
 
 
@@ -83,7 +64,7 @@ export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
 
 
 // function for getting data from local storage
-const getdata = (keyName) => {
+export const getdata = (keyName) => {
 	return JSON.parse(localStorage.getItem(keyName));
 };
 
@@ -116,7 +97,6 @@ export const createNotfyDivAndSaveDataOnLS = (targetedElem , createNotifyDivCall
 	
 	if (!countObj.arr.includes(joinedId)) {
 		createNotifyDivCallbackFunc(splitedId);
-		createMainDivInAddToCartPageCallbackFunc();
 		countObj.arr.push(joinedId)
 		countObj.arr = [... new Set(countObj.arr)];
 	}
@@ -124,12 +104,12 @@ export const createNotfyDivAndSaveDataOnLS = (targetedElem , createNotifyDivCall
 
 // function of updated the cart button's text which is placed in the navbar
 const updateCartTextFuncForAC = () => {
-	let dataOfLS = getdata("productDetails")
+	let dataOfLS = getdata("productDetails") || [];
 	let cartText = document.querySelector(".cart-btn span").nextElementSibling;
-	cartText.innerText = dataOfLS.length
+	cartText.innerText = dataOfLS.length;
 };
 
-updateCartTextFuncForAC()
+updateCartTextFuncForAC();
 
 // this fucntion is for creating an object for saving data on local storage
 export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem) => {
@@ -139,9 +119,7 @@ export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem) => {
 	newProductObj.pName = targetedElem.closest(".product-mb").querySelector(".ctnr-2-text").innerText;
 	newProductObj.pPrice = targetedElem.closest(".product-mb").querySelector(".ctnr-1-mb-text-2.mt-5").innerText.split("Rs")[0];
 	newProductObj.pStock = targetedElem.closest(".product-mb").querySelector(".product-stock").innerText.split(" ")[3];
-	newProductObj.pPlusBtn = targetedElem.closest(".product-mb").querySelector(".plus-btn");
-	newProductObj.pMinusBtn = targetedElem.closest(".product-mb").querySelector(".minus-btn");
-	newProductObj.pNumBtn = targetedElem.closest(".product-mb").querySelector(".num-btn");
+	newProductObj.pQuantity = targetedElem.closest(".product-mb").querySelector(".num-btn").innerText;
 	
 	let arrForGetDataFromLocalStorage = getdata("productDetails") || [];
 	
@@ -155,7 +133,7 @@ export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem) => {
 // function of add to cart button
 
 export const addToCartBtnFunc = (targetedElem , createNotifyDivCallbackFunc , createObjFroSavingDatacallBackFunc) => {
-	let retunredUpdatedCount = createNotifyDivCallbackFunc(targetedElem , createProductAddedNotiDivFunc , createDivOnAddToCartPageFunc);
+	let retunredUpdatedCount = createNotifyDivCallbackFunc(targetedElem , createProductAddedNotiDivFunc);
 	createObjFroSavingDatacallBackFunc(targetedElem , retunredUpdatedCount);
 	updateCartTextFuncForAC();
 };

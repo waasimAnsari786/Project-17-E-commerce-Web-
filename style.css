@@ -231,6 +231,7 @@ html {
     border-radius: var(--border-radius);
     letter-spacing: var(--letter-spacing);
     text-transform: capitalize;
+    font-family: var(--font-family);
 }
 
 .cart-btn span {
@@ -400,7 +401,7 @@ html {
     align-items: center;
 }
 
-.product-btn button{
+.product-btn button , .product-btn span{
     border: none;
     background-color: transparent;
     color: var(--font-color-black);
@@ -608,6 +609,36 @@ html {
 .add-to-cart-ctnr{
     padding: 10rem 0;
 }
+
+.add-to-cart-rem-btn{
+    background-color: var(--font-color-black);
+    border: none;
+    color: var(--font-color-white);
+    padding: var(--buttton-padding);
+    font-size: var(--font-size-sm);
+    border-radius: var(--border-radius);
+    letter-spacing: var(--letter-spacing);
+    text-transform: capitalize;
+    font-family: var(--font-family);
+    border: .2rem solid transparent;
+    transition: 0.5s;
+    width: 100%;
+}
+
+.add-to-cart-rem-btn:hover{
+    color: var(--font-color-black);
+    border: .2rem solid var(--font-color-black);
+    background-color: transparent;
+}
+
+.add-to-cart-main-div{
+    border: .1rem solid var(--border-box-shadow-color);
+    padding: var(--buttton-padding);
+}
+
+.add-to-cart-navi{
+    margin-bottom: 10rem;
+}
 /* add to cart page end */
 
 
@@ -660,4 +691,10 @@ html a {
 
 .ctnr-padding {
     padding: var(--ctnr-padding);
+}
+
+.flex-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
