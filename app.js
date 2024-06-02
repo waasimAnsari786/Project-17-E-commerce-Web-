@@ -1,7 +1,7 @@
 // localStorage.removeItem("productDetails")
 // navbar's code
 import { navBarShowHide } from "./functions.js";
-import { navbarParent, productStock } from "./variables.js";
+import { navbarParent } from "./variables.js";
 
 if (navbarParent) {
 	navbarParent.addEventListener("click", (evt) => {
@@ -25,7 +25,7 @@ if (navbarParent) {
 // products section's code
 import { productMainDiv } from "./variables.js";
 import { chooseQuantityOfProduct } from "./functions.js";
-import { addToCartBtnFunc , createNotfyDivAndSaveDataOnLS , createAnObjForSavingDataOnLocalStorageFunc } from "./functions.js";
+import { addToCartBtnFunc , createAnObjForSavingDataOnLocalStorageFunc , notifyAboutStockFunc } from "./functions.js";
 
 if (productMainDiv) {
 	productMainDiv.addEventListener("click", (evt) => {
@@ -41,10 +41,14 @@ if (productMainDiv) {
 		}
 	
 		else if (evt.target.classList.contains("add-to-cart-btn") || evt.target.classList.contains("fa-cart-shopping") || evt.target.innerText.toLowerCase() === 'add to cart') {
-			addToCartBtnFunc(evt.target, createNotfyDivAndSaveDataOnLS , createAnObjForSavingDataOnLocalStorageFunc);
+			addToCartBtnFunc(evt.target , createAnObjForSavingDataOnLocalStorageFunc);
+		}
+	});
+
+	productMainDiv.addEventListener("mouseover" , (evt) => {
+		if (evt.target.classList.contains("product-mb")) {
+			notifyAboutStockFunc(evt.target);
 		}
 	});
 }
-
-
 // products section's code end

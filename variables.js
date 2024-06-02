@@ -18,6 +18,11 @@ export let productMinusBtn = document.querySelector(".minus-btn");
 export let productAddToCartBtn = document.querySelector(".add-to-cart-btn");
 export let productStock = document.querySelector("#laptop-stock span");
 export let productPrice = document.querySelector("#laptop-price");
+
+export let productStocks = document.querySelectorAll(".product-stock span");
+productStocks.forEach(productStock => {
+    productStock.innerText = Math.floor(Math.random() * 100);
+});
 // products section's variables end
 
 

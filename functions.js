@@ -1,6 +1,6 @@
 // navbar's code
 
-import { hiddenNavDiv , navbarParent } from "./variables.js";
+import { hiddenNavDiv, navbarParent, productStocks } from "./variables.js";
 import { countObj } from "./objects.js";
 let count = 1;
 
@@ -41,7 +41,6 @@ export const navBarShowHide = () => {
 // products section's code
 
 // function of choosing the quantity of products
-import { produtObj } from "./objects.js";
 
 export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
 	countObj.count = updatedElem.innerText;
@@ -56,8 +55,8 @@ export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
 			countObj.count = 1;
 		}
 	}
-
 	updatedElem.innerText = countObj.count;
+	return countObj.count;
 };
 // function of choosing the quantity of products end
 
@@ -70,12 +69,12 @@ export const getdata = (keyName) => {
 
 
 // this function is for creating a notification div when user will add to cart
-const createProductAddedNotiDivFunc = (targetedElemID) => {
+const createProductAddedNotiDivFunc = (targetedElemID , msg) => {
 	countObj.count++;
 
 	let productAddedNotificationdiv = document.createElement("div");
 	productAddedNotificationdiv.classList.add("product-added-notification-div");
-	productAddedNotificationdiv.innerText = `Product ID ${targetedElemID} has been added`;
+	productAddedNotificationdiv.innerText = `Product ID ${targetedElemID} has ${msg}`;
 	document.querySelector("body").prepend(productAddedNotificationdiv);
 
 	productAddedNotificationdiv.style.position = 'fixed';
@@ -85,21 +84,6 @@ const createProductAddedNotiDivFunc = (targetedElemID) => {
 	setTimeout(() => {
 		productAddedNotificationdiv.remove();
 	}, 2000);
-};
-
-
-// fucntion for create a notification div when user will add any product and this function will also save data on local storage
-export const createNotfyDivAndSaveDataOnLS = (targetedElem , createNotifyDivCallbackFunc , createMainDivInAddToCartPageCallbackFunc) => {
-	let targetElemId = targetedElem.closest(".product-mb").getAttribute("id").split("-");
-	let splitedId = targetElemId.at(-1);
-	
-	let joinedId = targetElemId.join("-");
-	
-	if (!countObj.arr.includes(joinedId)) {
-		createNotifyDivCallbackFunc(splitedId);
-		countObj.arr.push(joinedId)
-		countObj.arr = [... new Set(countObj.arr)];
-	}
 };
 
 // function of updated the cart button's text which is placed in the navbar
@@ -112,31 +96,90 @@ const updateCartTextFuncForAC = () => {
 updateCartTextFuncForAC();
 
 // this fucntion is for creating an object for saving data on local storage
-export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem) => {
-	let newProductObj = Object.assign({} , produtObj);
+export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem, creteNotifyDivCallbackFunc) => {
+	let targetedID = targetedElem.closest(".product-mb").getAttribute("id").split("-").at(-1);
+	let targetedQuantity = targetedElem.closest(".product-mb").querySelector(".num-btn").innerText;
+	let targetedStock = targetedElem.closest(".product-mb").querySelector(".product-stock span");
+	let newProductObj = {};
 	newProductObj.pImg = targetedElem.closest(".product-mb").querySelector(".product-img img").src;
 	newProductObj.pCatagory = targetedElem.closest(".product-mb").querySelector(".product-text").innerText;
 	newProductObj.pName = targetedElem.closest(".product-mb").querySelector(".ctnr-2-text").innerText;
 	newProductObj.pPrice = targetedElem.closest(".product-mb").querySelector(".ctnr-1-mb-text-2.mt-5").innerText.split("Rs")[0];
-	newProductObj.pStock = targetedElem.closest(".product-mb").querySelector(".product-stock").innerText.split(" ")[3];
-	newProductObj.pQuantity = targetedElem.closest(".product-mb").querySelector(".num-btn").innerText;
-	
+	newProductObj.pQuantity = targetedQuantity;
+	newProductObj.pStock = targetedStock.innerText;
+	newProductObj.pFinalStock = newProductObj.pStock - newProductObj.pQuantity;
+
 	let arrForGetDataFromLocalStorage = getdata("productDetails") || [];
-	
+
 	if (!arrForGetDataFromLocalStorage.find(currElem => currElem.pImg === newProductObj.pImg)) {
 		arrForGetDataFromLocalStorage.unshift(newProductObj);
+		creteNotifyDivCallbackFunc(targetedID , "been added");
 	}
-	
+
+	let matchingElem = arrForGetDataFromLocalStorage.find((currElem) => {
+		return currElem.pImg === newProductObj.pImg;
+	});
+
+	if (matchingElem.pQuantity !== targetedQuantity) {
+		matchingElem.pQuantity = targetedQuantity;
+		matchingElem.pFinalStock = matchingElem.pStock - matchingElem.pQuantity;
+		if (!arrForGetDataFromLocalStorage.find(currElem => currElem.pImg === newProductObj.pImg)) {
+			arrForGetDataFromLocalStorage.unshift(newProductObj);
+		}
+	}
+
+	targetedStock.innerText = matchingElem.pFinalStock
 	localStorage.setItem("productDetails", JSON.stringify(arrForGetDataFromLocalStorage));
 };
 
 // function of add to cart button
 
-export const addToCartBtnFunc = (targetedElem , createNotifyDivCallbackFunc , createObjFroSavingDatacallBackFunc) => {
-	let retunredUpdatedCount = createNotifyDivCallbackFunc(targetedElem , createProductAddedNotiDivFunc);
-	createObjFroSavingDatacallBackFunc(targetedElem , retunredUpdatedCount);
+export const addToCartBtnFunc = (targetedElem, createObjFroSavingDatacallBackFunc) => {
+	createObjFroSavingDatacallBackFunc(targetedElem, createProductAddedNotiDivFunc);
 	updateCartTextFuncForAC();
 };
+
 // function of add to cart button end
+
+
+// function to notify user that the product he wants to buy, it's not available
+export const notifyAboutStockFunc = (targetedElem) => {
+	let targetedStock = targetedElem.closest(".product-mb").querySelector(".product-stock span");
+	let targetedIncBtn = targetedElem.closest(".product-mb").querySelector(".plus-btn");
+	let targetedDecBtn = targetedElem.closest(".product-mb").querySelector(".minus-btn");
+	let targetedID = targetedElem.closest(".product-mb").getAttribute("id").split("-").at(-1);
+
+	if (targetedStock.innerText === '0') {
+		targetedIncBtn.disabled = true;
+		createProductAddedNotiDivFunc(targetedID , "not available");
+	}
+
+	else if (targetedStock.innerText > '0') {
+		targetedIncBtn.disabled = false;
+	}
+
+	else{
+		targetedStock.innerText = '0'
+	}
+};
+
+
+// fnction to set the produts's stocks on local storage when page will refresh
+const printLSDataFunc = () => {
+	let arrOfLSData = getdata("productDetails") || [];
+	let productCards = document.querySelectorAll(".product-mb");
+
+	arrOfLSData.forEach(outerElement => {
+		productCards.forEach(innerElement => {
+			if (outerElement.pImg === innerElement.querySelector(".product-img img").src) {
+				outerElement.pStock = innerElement.querySelector(".product-stock span").innerText;
+			}
+		});
+	});
+
+	localStorage.setItem("productDetails" , JSON.stringify(arrOfLSData));
+};
+
+printLSDataFunc();
 
 // products section's code end
