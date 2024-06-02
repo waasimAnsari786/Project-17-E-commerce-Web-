@@ -31,15 +31,15 @@ const printDataOfLSinAddToCart = () => {
         price = pPrice * pQuantity;
 
         mainDiv = document.createElement("div");
-        mainDiv.classList.add("container", "add-to-cart-main-div");
+        mainDiv.classList.add("container", "add-to-cart-main-div" , "px-5");
         mainDiv.innerHTML = `<div class="row flex-box">
-                                <div class="col-5">
+                                <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
                                     <div class="row flex-box">
                                         <div class="col-4">
                                             <p class="product-text">${pCatagory}</p>
                                         </div>
 
-                                        <div class="col-4">
+                                        <div class="col-4 add-to-cart-img">
                                             <img src="${pImg}" class="w-100" alt="product img">
                                         </div>
 
@@ -49,11 +49,11 @@ const printDataOfLSinAddToCart = () => {
                                     </div>    
                                 </div>
 
-                                <div class="col-1" id="product-price">
+                                <div class="col-xxl-1 col-xl-1 col-lg-1 col-md-1 col-sm-2 col-2" id="product-price">
                                     <p class="ctnr-1-mb-text-5">${price.toFixed(2)}</p>
                                 </div>
 
-                                <div class="col-5">
+                                <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-5 add-to-cart-rem-btn-sec">
                                     <div class="row">
                                         <div class="col-6 mt-2">
                                             <div class="row">
@@ -107,7 +107,7 @@ const incAndDecThePriceFunc = (targetedElem, returnedCount) => {
     //     }
     // });
 
-    
+
 };
 
 document.querySelector("body").addEventListener("click", (evt) => {
