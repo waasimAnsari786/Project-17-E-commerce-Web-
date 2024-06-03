@@ -58,11 +58,25 @@
     0% {
         background-color: var(--header-color);
     }
-
+    
     100% {
         background-color: var(--header-color-2);
     }
 }
+/* home last container's animation end*/
+
+
+/* product added notify div animation */
+@keyframes product-div-ani {
+    100% {
+        transform: translateX(0rem);
+    }
+}
+/* product added notify div animation end */
+
+
+
+
 
 
 /* my font size's media query start */
@@ -487,7 +501,6 @@ html {
     right: 0;
     font-size: var(--font-size-md);
     transform: translateX(23rem);
-    transition: transform 0.5s;
 }
 
 /* products section end */
@@ -732,4 +745,10 @@ html a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.product-added-notify-ani{
+    animation-name: product-div-ani;
+    animation-duration: 2s;
+    animation-timing-function: ease;
 }

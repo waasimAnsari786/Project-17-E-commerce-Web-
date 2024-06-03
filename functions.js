@@ -56,7 +56,6 @@ export const chooseQuantityOfProduct = (increment, updatedElem, stock) => {
 		}
 	}
 	updatedElem.innerText = countObj.count;
-	return countObj.count;
 };
 // function of choosing the quantity of products end
 
@@ -69,7 +68,7 @@ export const getdata = (keyName) => {
 
 
 // this function is for creating a notification div when user will add to cart
-const createProductAddedNotiDivFunc = (targetedElemID , msg) => {
+export const createProductAddedNotiDivFunc = (targetedElemID , msg) => {
 	countObj.count++;
 
 	let productAddedNotificationdiv = document.createElement("div");
@@ -78,8 +77,8 @@ const createProductAddedNotiDivFunc = (targetedElemID , msg) => {
 	document.querySelector("body").prepend(productAddedNotificationdiv);
 
 	productAddedNotificationdiv.style.position = 'fixed';
-	productAddedNotificationdiv.style.transform = 'translateX(0rem)';
 	productAddedNotificationdiv.style.zIndex = countObj.count;
+	productAddedNotificationdiv.classList.add("product-added-notify-ani");
 
 	setTimeout(() => {
 		productAddedNotificationdiv.remove();
@@ -108,6 +107,7 @@ export const createAnObjForSavingDataOnLocalStorageFunc = (targetedElem, creteNo
 	newProductObj.pQuantity = targetedQuantity;
 	newProductObj.pStock = targetedStock.innerText;
 	newProductObj.pFinalStock = newProductObj.pStock - newProductObj.pQuantity;
+	newProductObj.pID = targetedID;
 
 	let arrForGetDataFromLocalStorage = getdata("productDetails") || [];
 
@@ -146,20 +146,22 @@ export const addToCartBtnFunc = (targetedElem, createObjFroSavingDatacallBackFun
 export const notifyAboutStockFunc = (targetedElem) => {
 	let targetedStock = targetedElem.closest(".product-mb").querySelector(".product-stock span");
 	let targetedIncBtn = targetedElem.closest(".product-mb").querySelector(".plus-btn");
-	let targetedDecBtn = targetedElem.closest(".product-mb").querySelector(".minus-btn");
+	let targetedAddToCartBtn = targetedElem.closest(".product-mb").querySelector(".add-to-cart-btn");
 	let targetedID = targetedElem.closest(".product-mb").getAttribute("id").split("-").at(-1);
 
 	if (targetedStock.innerText === '0') {
 		targetedIncBtn.disabled = true;
+		targetedAddToCartBtn.disabled = true;
 		createProductAddedNotiDivFunc(targetedID , "not available");
 	}
 
 	else if (targetedStock.innerText > '0') {
 		targetedIncBtn.disabled = false;
+		targetedAddToCartBtn.disabled = false;
 	}
 
 	else{
-		targetedStock.innerText = '0'
+		targetedStock.innerText = '0';
 	}
 };
 
@@ -173,6 +175,7 @@ const printLSDataFunc = () => {
 		productCards.forEach(innerElement => {
 			if (outerElement.pImg === innerElement.querySelector(".product-img img").src) {
 				outerElement.pStock = innerElement.querySelector(".product-stock span").innerText;
+				innerElement.querySelector(".num-btn").innerText = outerElement.pQuantity;
 			}
 		});
 	});
