@@ -578,6 +578,10 @@ html {
 
 
 /* footer start */
+.products-footer{
+    margin-top: 10rem;
+}
+
 .footer-pages-sec {
     display: flex;
     justify-content: space-between;
