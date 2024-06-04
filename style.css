@@ -491,6 +491,8 @@ html {
 }
 
 .product-added-notification-div {
+    box-shadow: .2rem .3rem .8rem black,
+                -.2rem -.2rem .8rem white ;
     background-color: var(--font-color-black);
     border-radius: var(--border-radius);
     padding: var(--buttton-padding);
