@@ -1,6 +1,6 @@
 // navbar's code
 
-import { hiddenNavDiv, navbarParent, productStocks } from "./variables.js";
+import { hiddenNavDiv, navbarParent } from "./variables.js";
 import { countObj } from "./objects.js";
 let count = 1;
 

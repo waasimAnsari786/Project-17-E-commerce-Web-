@@ -115,6 +115,9 @@ const incAndDecThePriceFunc = (increment, targetedElem, dataOfLS) => {
                 if (element.pQuantity === element.pStock) {
                     targetedElem.disabled = true;   
                     targetedElem.closest(".add-to-cart-main-div").querySelector(".minus-btn").disabled = false;
+                    targetedElem.addEventListener("mouseover" , () => {
+                        createProductAddedNotiDivFunc(element.pID , "not available")
+                    })
                 }
 
                 else if (element.pQuantity < element.pStock) {
